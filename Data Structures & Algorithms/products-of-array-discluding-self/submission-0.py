@@ -1,0 +1,20 @@
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        leftproduct=[1] * len(nums)
+        rightproduct=[1] * len(nums)
+        result=[1]
+
+        for i in range (1, len(nums)):
+            leftproduct[i]=nums[i-1]*leftproduct[i-1]
+        
+        for i in range (len(nums)-2, -1, -1):
+            rightproduct[i]=rightproduct[i+1]*nums[i+1]
+        
+        result = [x*y for x,y in zip(leftproduct,rightproduct)]
+        return result
+
+
+
+
+
+
